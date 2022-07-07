@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+    <persistence-unit name="mysql" transaction-type="RESOURCE_LOCAL">
+    	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+    	<class>entities.Bookings</class>
+    	<class>entities.Users</class>
+    	<class>entities.Flights</class>
+    	
+    	<properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+
+            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="false" /> 
+            
+            <!-- Connection Pooling settings -->
+            
+            <property name="hibernate.connection.provider_class"
+                value="connectionprovider.C3POConnectionProviderCGEnchanced" />
+
+
+			<property name="hibernate.c3p0.debugUnreturnedConnectionStackTraces" value="false"></property>
+			<property name="hibernate.c3p0.unreturnedConnectionTimeout" value="200"></property> 
+			
+			 
+			<property name="hibernate.generate_statistics" value="false" />
+
+            <property name="hibernate.c3p0.max_size" value="15" />
+            <property name="hibernate.c3p0.min_size" value="0" />
+            <property name="hibernate.c3p0.acquire_increment" value="1" />
+            <property name="hibernate.c3p0.idle_test_period" value="300" />
+            <property name="hibernate.c3p0.max_statements" value="0" />
+            <property name="hibernate.c3p0.timeout" value="100" />
+            
+            <!-- By default the value is 2046 and increases the memory usage hence this setting -->
+            <property name="hibernate.query.plan_cache_max_size" value="20" />
+        </properties>
+        
+    </persistence-unit>
+</persistence>
